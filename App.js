@@ -160,10 +160,11 @@ export default function App() {
                       if (reading.email !== email || reading.password !== password) {
                         Alert.alert(
                           null,
-                          "There is already some credentials saved. Would you like to overwrite then?",
+                          "There are already some credentials saved. Would you like to overwrite then?",
                           [
                               {text: "Yes", onPress: async () => {
                                   await remember(email, password);
+                                  setScan(true);
                                 }
                               },
                               {text: "No", onPress: () => {
@@ -189,6 +190,7 @@ export default function App() {
                         [
                             {text: "Yes", onPress: async () => {
                                 await remember(email, password);
+                                setScan(true);
                               }
                             },
                             {text: "Never", onPress: async () => {
@@ -240,6 +242,16 @@ export default function App() {
                   if (reading) {
                     setEmail(reading.email)
                     setPassword(reading.password);
+                  } else {
+                    console.log("There are no credentials saved on the device memory.");
+                    Alert.alert(
+                      "Alert",
+                      "There are no credentials saved on the device memory.",
+                      [
+                          {text: "OK"
+                          }
+                      ]
+                      );
                   }
                 }
               }
@@ -252,7 +264,7 @@ export default function App() {
         scan &&
           <>
             <Button
-              title="Scan Fingerprints"
+              title={types[0] === 1 ? 'Fingerprint Scan' : 'Password'}
               onPress={
                 Platform.OS === 'android'
                   ? showAndroidAlert
