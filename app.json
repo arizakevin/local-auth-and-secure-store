@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "This is an App for testing a login prototype system of encrypting and saving data in the device, in order to then retrieve this data with the use of local authentication, granting access to the user to the main system.",
   }
 }
