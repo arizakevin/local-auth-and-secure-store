@@ -96,6 +96,14 @@ export default function App() {
                 setPassword(reading.password);
 
                 console.log('Succesfuly Logged In!');
+                Alert.alert(
+                  "Successfully retrieved encrypted credentials from the device.",
+                  `Logged as ${reading.email} with password: ${reading.password}.` ,
+                  [
+                      {text: "Ok",
+                      }
+                  ]
+                );
               }
             }
           },
@@ -167,7 +175,7 @@ export default function App() {
                       } else {
                         Alert.alert(
                           null,
-                          "Successfully Logged In",
+                          "Successfully Logged In.",
                           [
                               {text: "Ok",
                               }
